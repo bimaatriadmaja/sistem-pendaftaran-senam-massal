@@ -18,6 +18,8 @@ Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::resource('peserta', PesertaController::class)->only(['edit', 'update', 'destroy']);
+    Route::get('/admin/password', [AdminController::class, 'showChangePasswordForm'])->name('password.change.form');
+    Route::post('/admin/password', [AdminController::class, 'changePassword'])->name('password.change');
 });
 
 
